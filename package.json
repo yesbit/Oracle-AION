@@ -1,0 +1,31 @@
+{
+  "name": "oracle-nodejs",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yesbit/Oracle-AION.git"
+  },
+  "author": {
+    "name": "Remon Nashid",
+    "email": "remon@yesbit.ca",
+    "url": "https://github.com/remon-nashid/"
+  },
+  "bugs": {
+    "url": "https://github.com/yesbit/Oracle-AION/issues"
+  },
+  "homepage": "https://github.com/yesbit/Oracle-AION#readme",
+  "dependencies": {
+    "bignumber.js": "^7.2.1",
+    "dotenv": "^6.0.0",
+    "ethers": "^3.0.29",
+    "node-fetch": "^2.2.0",
+    "node-schedule": "^1.3.0",
+    "nodemon": "^1.18.4"
+  }
+}
