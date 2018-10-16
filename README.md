@@ -12,7 +12,7 @@ Oracle contract that contains assets hourly prices + Nodejs service
 ```
 SIGNER_PRIVATE_KEY=0x1235432.....
 ```
-- NodeJS service is scheduled, internally, using crontab-like configuration. In order to run the NodeJS serve on the first minute of each hower, you need to add the following line to `.env` file:
+- NodeJS service is scheduled, internally, using crontab-like configuration. In order to run the NodeJS service on the first minute of each hour, you need to add the following line to `.env` file:
 ```
 SCHEDULE="* * * * *"
 ```
