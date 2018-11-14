@@ -2,10 +2,10 @@
 
 Oracle contract that contains assets hourly prices + Nodejs service 
 
-### Install & Run
+### Install
 
-- `git clone git@github.com:yesbit/Oracle-Feed.git`
-- `cd Oracle-Feed`
+- `git clone git@github.com:yesbit/basic-oracle.git`
+- `cd basic-oracle`
 - `npm install`
 - `touch .env`
 - A private key is required to sign contract function calls. So add one to `.env` file as follows:
@@ -16,11 +16,18 @@ SIGNER_PRIVATE_KEY=0x1235432.....
 ```
 SCHEDULE="* * * * *"
 ```
-- `npm start`.
-- If everything is OK, server will show some logs as follows:
+
+### Run NodeJS daemon
+
+The NodeJS service needs to be running 24/7 in order to feed Oracle contract with data. You can run it as follows:
+
+```
+npm run start:node
 ```
 
-> oracle-nodejs@0.0.1 start projects/Oracle-Feed
+If everything is OK, server will show some logs as follows:
+```
+> basic-oracle@0.0.1 start:node [path-to-repo]/projects/basic-oracle
 > nodemon index.js
 
 [nodemon] 1.18.4
@@ -30,10 +37,29 @@ SCHEDULE="* * * * *"
 { ID: 'USDCAD',
   oracleID: 0,
   URL:
-   'http://api.fxhistoricaldata.com/indicators?timeframe=5min&expression=close&item_count=1&instruments=USDCAD',
+   'https://free.currencyconverterapi.com/api/v6/convert?q=USD_CAD&compact=y',
   contentType: 'application/json',
   bodyParser: 'json',
   priceSelector: [Function: priceSelector] }
-getTransactionCount: 659
-Result:  {"nonce":659,"gasPrice":{"_bn":"b2d05e00"},"gasLimit":{"_bn":"16e360"},"to":"0x323919c6dF517765070f4b75Bb886B5Edb927bF4","value":{"_bn":"0"},"data":"0xaa585d56000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000003293","v":41,"r":"0xb8852ac8435ecb5cb4eedc63b93916723dc99ddc6f631aec1ac207084b0fde1b","s":"0x4ccfe81f2d6516545a7379e4454cbab619d0643b11b4f2ed4ede79ceddd53efc","chainId":3,"from":"0xCe2D136840407e9A7405df31C6ceD4c4f8C2C962","hash":"0x5a4c75e7d2bcf0269ce43b43c6b2fe9d04fd62138081b574c2254e1b8c333251"}
+0 1324320
+getTransactionCount: 3778
+Result:  {"nonce":3778,"gasPrice":{"_bn":"b2d05e00"},"gasLimit":{"_bn":"16e360"},"to":"0x323919c6dF517765070f4b75Bb886B5Edb927bF4","value":{"_bn":"0"},"data":"0xaa585d56000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000160000000000000000000000000000000000000000000000000000000000143520","v":42,"r":"0x352200273ef5d8ccf5aadf7c08958f4ac136564f7d24ee53a4f6fb3a5d84a9c6","s":"0x68bdecc5d5f5508682d4067f48db78fd1cef9bb456e9359a31ee73c3ef5956db","chainId":3,"from":"0x496bA215Bf36a7EfE090bfB40881cDE16cA5E4F0","hash":"0xe2596c37ad375ef565b9fc0dae6a80766b874da47b3332c1df5e53c998b30ded"}
+{ ID: 'BTCUSD',
+  oracleID: 1,
+  URL:
+   'https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD',
+  contentType: 'application/json',
+  bodyParser: 'json',
+  priceSelector: [Function: priceSelector] }
+1 5665230000
 ```
+
+### Run React UI
+
+The React UI reads information from Oracle contract, and displays it in a chart. Simply run the following command to start it:
+
+```
+npm start
+```
+
+A web server will start `http://localhost:3000`, then a browser tab will open at that URL, automatically.

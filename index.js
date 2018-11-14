@@ -16,7 +16,7 @@ if (!privateKey) {
   process.exit(1);
 }
 
-const contractDetails = require("./contract/details");
+const contractDetails = require("./src/contract-details");
 const provider = new ethers.providers.InfuraProvider(network);
 
 const normalizedPath = require("path").join(__dirname, "modules");
@@ -33,7 +33,6 @@ const contract = new ethers.Contract(
 );
 
 function processFeed(feed) {
-  // TODO Return promise
   return fetch(feed.URL).then(res => {
       const contentType = res.headers.get('content-type');
       if (contentType && contentType.includes(feed.contentType)) {
@@ -60,7 +59,7 @@ function run(modules, contract) {
     const module = modules.shift()
     console.log(module)
     processFeed(module).then((price, err) => {
-      // TODO
+      console.log(module.oracleID, price)
       if (err)
         console.error(err)
 
