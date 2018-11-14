@@ -1,5 +1,5 @@
 {
-  "name": "oracle-nodejs",
+  "name": "oracle-feed",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -12,9 +12,8 @@
     "url": "git+https://github.com/yesbit/Oracle-Feed.git"
   },
   "author": {
-    "name": "Remon Nashid",
-    "email": "remon@yesbit.ca",
-    "url": "https://github.com/remon-nashid/"
+    "name": "Yesbit LTD",
+    "url": "https://github.com/yesbit/"
   },
   "bugs": {
     "url": "https://github.com/yesbit/Oracle-Feed/issues"
