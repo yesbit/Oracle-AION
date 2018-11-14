@@ -1,4 +1,4 @@
-# Oracle-feed
+# basic-oracle
 
 Oracle contract that contains assets hourly prices + Nodejs service 
 
